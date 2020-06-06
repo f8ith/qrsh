@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='qrcode-scanner',
+    name='scanqr',
     version='0.2',
     packages=find_packages(),
     include_package_data=True,
@@ -14,7 +14,7 @@ setup(
         'mss'
     ],
     entry_points={
-        'console_scripts': ['scanqr=qrcode-scanner.video:main',
-                            'captureqr=qrcode-scanner.clipboard:main'],
+        'console_scripts': ['scanqr=scanqr.video:main',
+                            'captureqr=scanqr.clipboard:main'],
     }
 )
