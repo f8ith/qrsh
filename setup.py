@@ -6,10 +6,12 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'opencv-python',
         'pyzbar',
         'imutils',
-        'pillow'
+        'pillow',
+        'pynput',
+        'pyscreenshot',
+        'mss'
     ],
     entry_points={
         'console_scripts': ['scanqr=qrcode.video:main',
