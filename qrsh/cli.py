@@ -5,7 +5,7 @@ from PIL.ImageGrab import grab, grabclipboard
 import sys
 import time
 
-from scanqr import _decode
+from qrsh import _decode
 
 app = typer.Typer()
 
