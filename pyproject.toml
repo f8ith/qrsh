@@ -10,6 +10,7 @@ pillow = "*"
 opencv-python = "^4.5.1"
 typer = "^0.3.2"
 pyzbar = "^0.1.8"
+imutils = "^0.5.4"
 
 [tool.poetry.scripts]
 qrsh = 'qrsh.cli:app'
