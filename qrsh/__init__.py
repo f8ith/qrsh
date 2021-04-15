@@ -6,7 +6,7 @@ import numpy as np
 import webbrowser
 
 
-def _decode(frame, pillow=False):
+def _decode(frame):
     if frame is not None:
         barcodes = decode(frame)
         for barcode in barcodes:
@@ -15,5 +15,3 @@ def _decode(frame, pillow=False):
                 if barcode_data.startswith('http://') \
                         or barcode_data.startswith('https://'):
                      webbrowser.open(barcode_data)
-                sys.exit()
-

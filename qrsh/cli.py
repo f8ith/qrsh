@@ -30,14 +30,13 @@ def scan_camera():
     finally:
         cap.release()
         cv2.destroyAllWindows()
-        sys.exit()
 
 @app.command('screen')
 def scan_screen():
     '''
     Get QR code from screen
     '''
-    _decode(grab(), pillow=True)
+    _decode(grab())
 
 @app.command('clipboard')
 def scan_clipboard(capture: bool = typer.Option(False, '-c')):
@@ -46,8 +45,11 @@ def scan_clipboard(capture: bool = typer.Option(False, '-c')):
     '''
     if capture:
         if sys.platform == 'darwin':
-            subprocess.run(['screencapture', '-c', '-s'])
-    _decode(grabclipboard(), pillow=True)
+            try:
+                subprocess.run(['screencapture', '-c', '-s'], check=True)
+            except subprocess.CalledProcessError:
+                typer.echo('Capture cancelled.')
+    _decode(grabclipboard())
 
 if __name__ == '__main__':
     app()
