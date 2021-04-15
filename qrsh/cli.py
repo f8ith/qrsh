@@ -1,9 +1,10 @@
-import typer
-
-import cv2
-from PIL.ImageGrab import grab, grabclipboard
 import sys
 import time
+import subprocess
+
+import typer
+import cv2
+from PIL.ImageGrab import grab, grabclipboard
 
 from qrsh import _decode
 
@@ -39,10 +40,13 @@ def scan_screen():
     _decode(grab(), pillow=True)
 
 @app.command('clipboard')
-def scan_clipboard():
+def scan_clipboard(capture: bool = typer.Option(False, '-c')):
     '''
     Capture QR code from your screen
     '''
+    if capture:
+        if sys.platform == 'darwin':
+            subprocess.run(['screencapture', '-c', '-s'])
     _decode(grabclipboard(), pillow=True)
 
 if __name__ == '__main__':
